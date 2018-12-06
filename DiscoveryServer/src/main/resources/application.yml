@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: ysdt-eureka-server
+
+
+# eureka.instance.hostname is not needed if you are running on a machine that knows its own hostname
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://server01:8761/eureka/,http://server02:8762/eureka/,http://server03:8763/eureka/
+#      defaultZone: http://10.97.13.77:${server.port}/eureka/
+
+
+
+---
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: server01
+#  client:
+#    service-url:
+#      defaultZone: http://server02:8762/eureka/
+spring:
+  profiles: server01
+#
+---
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: server02
+#  client:
+#    service-url:
+#      defaultZone: http://server03:8761/eureka/
+spring:
+  profiles: server02
+#
+---
+  server:
+    port: 8763
+  eureka:
+    instance:
+      hostname: server03
+#    client:
+#      service-url:
+#        defaultZone: http://server01:8761/eureka/
+  spring:
+    profiles: server03
